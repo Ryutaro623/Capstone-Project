@@ -16,51 +16,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LEFT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-Vh-zbb">
-                                <rect key="frame" x="61" y="55" width="81" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BLE CONTROLLER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86p-gw-MbT">
+                                <rect key="frame" x="56" y="49" width="274" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86p-gw-MbT">
-                                <rect key="frame" x="250" y="45" width="95" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="uCK-WI-AKt">
-                                <rect key="frame" x="140" y="297" width="314" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="Rightchange:" destination="BYZ-38-t0r" eventType="valueChanged" id="5eu-0x-RZW"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4q-lx-04M">
-                                <rect key="frame" x="143" y="523" width="88" height="56"/>
+                                <rect key="frame" x="143" y="296" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="reset"/>
+                                <buttonConfiguration key="configuration" style="filled" title="STOP">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="Stopb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ShW-nS-K5l"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Qcx-Mc-E5W">
-                                <rect key="frame" x="-56" y="297" width="314" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LA-gl-h1t">
+                                <rect key="frame" x="143" y="188" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="↑">
+                                    <fontDescription key="titleFontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="36"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="Leftchange:" destination="BYZ-38-t0r" eventType="valueChanged" id="3F6-5f-paW"/>
+                                    <action selector="Forwardb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tIs-3Y-sWB"/>
                                 </connections>
-                            </slider>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-HM-obf">
+                                <rect key="frame" x="251" y="296" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="→">
+                                    <fontDescription key="titleFontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="36"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="RightB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QfE-cl-d6B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml4-23-mV5">
+                                <rect key="frame" x="35" y="296" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="←">
+                                    <fontDescription key="titleFontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="36"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="Leftb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uEZ-Nh-ST5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFY-Jz-M6O">
+                                <rect key="frame" x="143" y="404" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="↓">
+                                    <fontDescription key="titleFontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="36"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="Backb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RPn-p0-6yJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="Left" destination="Qcx-Mc-E5W" id="MMe-2t-K0P"/>
-                        <outlet property="RIght" destination="uCK-WI-AKt" id="JgG-JD-IMl"/>
-                        <outlet property="Stop" destination="i4q-lx-04M" id="MsS-UY-Nm7"/>
+                        <outlet property="Back" destination="HFY-Jz-M6O" id="kew-lR-HHR"/>
+                        <outlet property="Forward" destination="6LA-gl-h1t" id="Aql-Vb-xX5"/>
+                        <outlet property="Left" destination="ml4-23-mV5" id="EoV-qs-4tL"/>
+                        <outlet property="Right" destination="vBq-HM-obf" id="wqS-1p-G1N"/>
+                        <outlet property="Stop" destination="vBq-HM-obf" id="jDE-f0-cue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
