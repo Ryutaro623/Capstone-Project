@@ -148,4 +148,10 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
             walkerPeripheral.writeValue(value, for: characteristic, type: .withoutResponse)
         }
     }
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("Central scanning for peripheral");
+                        
+        centralManager.scanForPeripherals(withServices: [CBUUID(string: "FFE0")],
+                                                options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
+    }
 }
