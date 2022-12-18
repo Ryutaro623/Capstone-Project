@@ -14,13 +14,15 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
     var lxCharacteristic: CBCharacteristic!
     var rxCharacteristic: CBCharacteristic!
     
-    @IBOutlet weak var RIght: UISlider!
+    
+    
+    @IBOutlet weak var Left: UIButton!
+    @IBOutlet weak var Back: UIButton!
+    @IBOutlet weak var Right: UIButton!
+    @IBOutlet weak var Forward: UIButton!
     @IBOutlet weak var Stop: UIButton!
-    @IBOutlet weak var Left: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
-        Left.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
-        RIght.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
         centralManager = CBCentralManager(delegate: self, queue: nil)
         // Do any additional setup after loading the view.
     }
@@ -101,10 +103,7 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
                 peripheral.readValue(for: characteristic)
                 
                 print("RX Characteristic: \(rxCharacteristic.uuid)")
-                Left.isEnabled = true
-                Left.value = 124.5
-                RIght.isEnabled = true
-                RIght.value = 124.5
+                
             }
             
             if characteristic.uuid.isEqual(CBUUID(string: "FFE1")){
@@ -116,22 +115,33 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
         }
     }
     @IBAction func Stopb(_ sender: Any) {
-        Left.value = 124.5;
-        RIght.value = 124.5;
-        print("left :",Left.value);
-        print("right :", RIght.value);
-        
+        let move:UInt8 = UInt8(0);
+        writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
+        print("Stop")
     }
     
-    @IBAction func Leftchange(_ sender: Any) {
-        print("left :",Left.value);
-        let slider:UInt8 = UInt8(Left.value)
-        writeValuetoChar(withCharacteristic: lxCharacteristic!, withValue:Data([slider]))
+    @IBAction func Forwardb(_ sender: Any) {
+        let move:UInt8 = UInt8(1);
+        writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
+        print("Forward")
     }
-    @IBAction func Rightchange(_ sender: Any) {
-        print("right :", RIght.value);
-        let slider:UInt8 = UInt8(RIght.value)
-        writeValuetoChar(withCharacteristic: rxCharacteristic!, withValue:Data([slider]))
+    
+    @IBAction func RightB(_ sender: Any) {
+        let move:UInt8 = UInt8(2);
+        writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
+        print("Right")
+    }
+    
+    @IBAction func Backb(_ sender: Any) {
+        let move:UInt8 = UInt8(3);
+        writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
+        print("Back")
+    }
+    
+    @IBAction func Leftb(_ sender: Any) {
+        let move:UInt8 = UInt8(4);
+        writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
+        print("Left")
     }
     private func writeValuetoChar( withCharacteristic characteristic: CBCharacteristic, withValue value: Data){
         if characteristic.properties.contains(.writeWithoutResponse) && walkerPeripheral != nil{
