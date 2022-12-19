@@ -23,9 +23,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4q-lx-04M">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4q-lx-04M">
                                 <rect key="frame" x="143" y="296" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="STOP">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
@@ -34,7 +34,7 @@
                                     <action selector="Stopb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ShW-nS-K5l"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LA-gl-h1t">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LA-gl-h1t">
                                 <rect key="frame" x="143" y="188" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -45,7 +45,7 @@
                                     <action selector="Forwardb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tIs-3Y-sWB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-HM-obf">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-HM-obf">
                                 <rect key="frame" x="251" y="296" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -56,7 +56,7 @@
                                     <action selector="RightB:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QfE-cl-d6B"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml4-23-mV5">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml4-23-mV5">
                                 <rect key="frame" x="35" y="296" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -67,9 +67,9 @@
                                     <action selector="Leftb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uEZ-Nh-ST5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFY-Jz-M6O">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFY-Jz-M6O">
                                 <rect key="frame" x="143" y="404" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="↓">
                                     <fontDescription key="titleFontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="36"/>
@@ -83,11 +83,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="Back" destination="HFY-Jz-M6O" id="kew-lR-HHR"/>
-                        <outlet property="Forward" destination="6LA-gl-h1t" id="Aql-Vb-xX5"/>
-                        <outlet property="Left" destination="ml4-23-mV5" id="EoV-qs-4tL"/>
-                        <outlet property="Right" destination="vBq-HM-obf" id="wqS-1p-G1N"/>
-                        <outlet property="Stop" destination="vBq-HM-obf" id="jDE-f0-cue"/>
+                        <outlet property="Back" destination="HFY-Jz-M6O" id="BV1-Rm-7bh"/>
+                        <outlet property="Forward" destination="6LA-gl-h1t" id="NgL-4x-o0C"/>
+                        <outlet property="Left" destination="ml4-23-mV5" id="L2x-1X-QEl"/>
+                        <outlet property="Right" destination="vBq-HM-obf" id="usK-ej-0ng"/>
+                        <outlet property="Stop" destination="i4q-lx-04M" id="5vG-9h-BBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

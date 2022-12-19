@@ -14,13 +14,11 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
     var lxCharacteristic: CBCharacteristic!
     var rxCharacteristic: CBCharacteristic!
     
-    
-    
     @IBOutlet weak var Left: UIButton!
     @IBOutlet weak var Back: UIButton!
     @IBOutlet weak var Right: UIButton!
-    @IBOutlet weak var Forward: UIButton!
     @IBOutlet weak var Stop: UIButton!
+    @IBOutlet weak var Forward: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -111,6 +109,13 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
                 lxCharacteristic = characteristic
                 
                 print("TX Characteristic: \(lxCharacteristic.uuid)")
+                
+                
+                Forward.isEnabled = true;
+                Back.isEnabled = true;
+                Right.isEnabled = true;
+                Left.isEnabled = true;
+                Stop.isEnabled = true;
             }
         }
     }
@@ -149,7 +154,11 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
         }
     }
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("Central scanning for peripheral");
+        Forward.isEnabled = false;
+        Back.isEnabled = false;
+        Right.isEnabled = false;
+        Left.isEnabled = false;
+        Stop.isEnabled = false;        print("Central scanning for peripheral");
                         
         centralManager.scanForPeripherals(withServices: [CBUUID(string: "FFE0")],
                                                 options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
