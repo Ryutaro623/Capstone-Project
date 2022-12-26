@@ -7,13 +7,16 @@
 
 import UIKit
 import CoreBluetooth
+import InstantSearchVoiceOverlay
 
 class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDelegate{
+    let voiceOverlay = VoiceOverlayController()
     var centralManager: CBCentralManager!
     var walkerPeripheral: CBPeripheral!
     var lxCharacteristic: CBCharacteristic!
     var rxCharacteristic: CBCharacteristic!
     
+    @IBOutlet weak var Voice: UIButton!
     @IBOutlet weak var Left: UIButton!
     @IBOutlet weak var Back: UIButton!
     @IBOutlet weak var Right: UIButton!
@@ -116,6 +119,7 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
                 Right.isEnabled = true;
                 Left.isEnabled = true;
                 Stop.isEnabled = true;
+                Voice.isEnabled = true;
             }
         }
     }
@@ -148,6 +152,53 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
         writeValuetoChar(withCharacteristic: rxCharacteristic, withValue: Data([move]))
         print("Left")
     }
+    
+    @IBAction func VoiceC(_ sender: Any) {
+        let move:UInt8 = UInt8(0);
+        self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+        voiceOverlay.settings.autoStop = false
+        voiceOverlay.settings.layout.inputScreen.titleInProgress = "Sending..."
+
+
+        voiceOverlay.start(on: self, textHandler: {text, final, _ in
+            if(final){
+                let move:UInt8 = UInt8(0);
+                self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+                print("final:\(text)")
+            } else {
+                let sentence = text;
+                let words = sentence.byWords;
+                let lastwords = words.last;
+                if(lastwords?.contains("Forward") ?? false||lastwords?.contains("forward") ?? false){
+                    let move:UInt8 = UInt8(1);
+                    self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+                    print("move forward")
+                } else if(lastwords?.contains("right") ?? false||lastwords?.contains("Right") ?? false){
+                    let move:UInt8 = UInt8(2);
+                    self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+                    print("turn right")
+                } else if(lastwords?.contains("left") ?? false||lastwords?.contains("Left") ?? false){
+                    let move:UInt8 = UInt8(4);
+                    self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+                    print("turn left")
+                } else if(lastwords?.contains("Backward") ?? false||lastwords?.contains("backward") ?? false){
+                    let move:UInt8 = UInt8(3);
+                    self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]));
+                    print("move backward")
+                } else if(lastwords?.contains("Stop") ?? false||lastwords?.contains("stop") ?? false){
+                    let move:UInt8 = UInt8(0);
+                    self.writeValuetoChar(withCharacteristic: self.rxCharacteristic, withValue: Data([move]))
+                    print("stop moving")
+                }else{
+                    print("In progress")
+                }
+                    
+            }
+            
+        },
+                errorHandler: {error in })
+        
+    }
     private func writeValuetoChar( withCharacteristic characteristic: CBCharacteristic, withValue value: Data){
         if characteristic.properties.contains(.writeWithoutResponse) && walkerPeripheral != nil{
             walkerPeripheral.writeValue(value, for: characteristic, type: .withoutResponse)
@@ -158,9 +209,22 @@ class ViewController:UIViewController,CBCentralManagerDelegate,CBPeripheralDeleg
         Back.isEnabled = false;
         Right.isEnabled = false;
         Left.isEnabled = false;
-        Stop.isEnabled = false;        print("Central scanning for peripheral");
+        Stop.isEnabled = false;
+        Voice.isEnabled = false;
+        print("Central scanning for peripheral");
                         
         centralManager.scanForPeripherals(withServices: [CBUUID(string: "FFE0")],
                                                 options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
+    }
+    
+}
+
+extension StringProtocol {
+    var byWords: [SubSequence] {
+        var byWords: [SubSequence] = []
+        enumerateSubstrings(in: startIndex..., options: .byWords) { _, range, _, _ in
+            byWords.append(self[range])
+        }
+        return byWords
     }
 }
